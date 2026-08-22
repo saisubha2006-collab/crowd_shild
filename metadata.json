@@ -1,0 +1,6 @@
+{
+  "name": "CrowdShield AI",
+  "description": "Crowd Safety and Stampede Prevention Platform with Real-Time Monitoring, Safe Route Guidance, and Emergency Command Center.",
+  "requestFramePermissions": ["camera", "geolocation", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
