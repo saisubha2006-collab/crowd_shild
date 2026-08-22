@@ -1,0 +1,514 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #030712;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --bg-card-subtle: rgba(30, 41, 59, 0.65);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-main: rgba(56, 189, 248, 0.25);
+  --neon-cyan: #06b6d4;
+  --neon-indigo: #6366f1;
+  --neon-emerald: #10b981;
+  --neon-amber: #f59e0b;
+  --neon-ruby: #ef4444;
+}
+
+:root[data-theme="light"], .light {
+  --bg-main: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-subtle: rgba(241, 245, 249, 0.9);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border-main: rgba(56, 189, 248, 0.4);
+}
+
+@layer utilities {
+  /* ==========================================================================
+     VIBRANT HOLOGRAPHIC & LIQUID FROSTED GLASS ENGINE
+     ========================================================================== */
+  .clean-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(30, 41, 59, 0.65) 100%);
+    backdrop-filter: blur(28px) saturate(220%);
+    -webkit-backdrop-filter: blur(28px) saturate(220%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.5rem;
+    color: var(--text-main);
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .clean-card:hover {
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: 0 20px 48px -10px rgba(6, 182, 212, 0.18),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  .glass-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.72) 0%, rgba(20, 30, 55, 0.68) 100%);
+    backdrop-filter: blur(32px) saturate(220%);
+    -webkit-backdrop-filter: blur(32px) saturate(220%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5rem;
+    color: var(--text-main);
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .glass-card-light {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.5) 100%);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1.25rem;
+    color: var(--text-main);
+  }
+
+  .glass-dock {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.82) 0%, rgba(20, 30, 60, 0.8) 100%);
+    backdrop-filter: blur(40px) saturate(240%);
+    -webkit-backdrop-filter: blur(40px) saturate(240%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7),
+                0 0 30px rgba(6, 182, 212, 0.2),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Ultra Liquid Frosted Glass */
+  .liquid-glass {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.62) 0%, rgba(24, 32, 56, 0.55) 100%);
+    backdrop-filter: blur(42px) saturate(240%);
+    -webkit-backdrop-filter: blur(42px) saturate(240%);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65),
+                0 0 35px rgba(6, 182, 212, 0.15),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.45),
+                inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .liquid-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.62) 0%, rgba(15, 23, 42, 0.7) 100%);
+    backdrop-filter: blur(36px) saturate(230%);
+    -webkit-backdrop-filter: blur(36px) saturate(230%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 1.75rem;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.42),
+                inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .liquid-dock {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(20, 30, 60, 0.75) 100%);
+    backdrop-filter: blur(48px) saturate(250%);
+    -webkit-backdrop-filter: blur(48px) saturate(250%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    box-shadow: 0 30px 70px -12px rgba(0, 0, 0, 0.75),
+                0 0 40px rgba(56, 189, 248, 0.22),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .liquid-pill {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px) saturate(220%);
+    -webkit-backdrop-filter: blur(24px) saturate(220%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45);
+    border-radius: 9999px;
+  }
+
+  .liquid-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+                0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .liquid-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
+                0 10px 28px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(56, 189, 248, 0.25);
+    transform: translateY(-1px);
+  }
+
+  /* Vibrant Glowing Colorful Action Buttons */
+  .btn-glow-cyan {
+    background: linear-gradient(135deg, #06b6d4 0%, #0284c7 50%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.5),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+  }
+  .btn-glow-cyan:hover {
+    box-shadow: 0 0 35px rgba(6, 182, 212, 0.75),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.8);
+    transform: translateY(-1.5px) scale(1.02);
+  }
+
+  .btn-glow-emerald {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.45),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+  }
+  .btn-glow-emerald:hover {
+    box-shadow: 0 0 35px rgba(16, 185, 129, 0.7),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.8);
+    transform: translateY(-1.5px) scale(1.02);
+  }
+
+  .btn-glow-ruby {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+    color: #ffffff;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.6),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
+  }
+  .btn-glow-ruby:hover {
+    box-shadow: 0 0 45px rgba(239, 68, 68, 0.85),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.9);
+    transform: translateY(-1.5px) scale(1.03);
+  }
+
+  .btn-glow-amber {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0f172a;
+    font-weight: 900;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+  }
+  .btn-glow-amber:hover {
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.75),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.8);
+    transform: translateY(-1.5px) scale(1.02);
+  }
+
+  /* Holographic Neon Badge */
+  .badge-neon-cyan {
+    background: rgba(6, 182, 212, 0.18);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  .badge-neon-emerald {
+    background: rgba(16, 185, 129, 0.18);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.45);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  .badge-neon-ruby {
+    background: rgba(239, 68, 68, 0.22);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.5);
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.35),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  .badge-neon-purple {
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+    border: 1px solid rgba(192, 132, 252, 0.45);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Shimmering Holographic Overlay */
+  .hologram-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .hologram-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      60deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.12) 50%,
+      transparent 70%
+    );
+    transform: rotate(25deg);
+    animation: shimmerSlide 8s infinite linear;
+    pointer-events: none;
+  }
+
+  @keyframes shimmerSlide {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
+  }
+
+  .liquid-modal {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(20, 30, 60, 0.8) 100%);
+    backdrop-filter: blur(52px) saturate(260%);
+    -webkit-backdrop-filter: blur(52px) saturate(260%);
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 2rem;
+    box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.85),
+                0 0 45px rgba(6, 182, 212, 0.25),
+                inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Windows 11 Fluent Acrylic / Mica UI */
+  .fluent-acrylic {
+    background: rgba(18, 24, 38, 0.88);
+    backdrop-filter: blur(24px) contrast(105%);
+    -webkit-backdrop-filter: blur(24px) contrast(105%);
+    border: 1px solid #2e384d;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    border-radius: 0.85rem;
+  }
+
+  .fluent-card {
+    background: #141b27;
+    border: 1px solid #283347;
+    border-radius: 0.85rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================================================
+   OS Root Level Automatic Liquid Glass Theme Transformations
+   ========================================================================== */
+.os-macos .clean-card,
+.os-ios .clean-card,
+.ui-liquid .clean-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.62) 0%, rgba(15, 23, 42, 0.72) 100%) !important;
+  backdrop-filter: blur(36px) saturate(230%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(230%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 1.75rem !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6),
+              inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.42),
+              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.os-macos button,
+.os-ios button,
+.ui-liquid button {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.os-windows .clean-card,
+.ui-fluent .clean-card {
+  border-radius: 0.85rem !important;
+  border-color: #2b3548 !important;
+}
+
+/* Dynamic Ambient Liquid Glowing Animation */
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(70px, -50px) scale(1.2); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-60px, 60px) scale(1.25); }
+  66% { transform: translate(40px, -30px) scale(0.85); }
+}
+
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(50px, 70px) scale(1.18); }
+  66% { transform: translate(-50px, -40px) scale(0.95); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; filter: blur(120px); }
+  50% { opacity: 0.75; filter: blur(100px); }
+}
+
+.animate-orb-1 {
+  animation: floatOrb1 16s ease-in-out infinite, pulseGlow 8s ease-in-out infinite;
+}
+.animate-orb-2 {
+  animation: floatOrb2 20s ease-in-out infinite, pulseGlow 10s ease-in-out infinite;
+}
+.animate-orb-3 {
+  animation: floatOrb3 18s ease-in-out infinite, pulseGlow 9s ease-in-out infinite;
+}
+
+/* Automatic Low-Memory Mode */
+.low-memory-mode .glass-card,
+.low-memory-mode .glass-card-light,
+.low-memory-mode .glass-dock,
+.low-memory-mode .liquid-glass,
+.low-memory-mode .liquid-card,
+.low-memory-mode .liquid-dock,
+[data-low-memory="true"] .glass-card,
+[data-low-memory="true"] .glass-card-light,
+[data-low-memory="true"] .glass-dock,
+[data-low-memory="true"] .liquid-glass,
+[data-low-memory="true"] .liquid-card,
+[data-low-memory="true"] .liquid-dock {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] .bg-slate-950 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .bg-slate-900 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .bg-slate-850,
+[data-theme="light"] .bg-slate-800 {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-700 {
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .text-slate-100,
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-slate-200 {
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .text-slate-300 {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .text-slate-400 {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .text-red-400 {
+  color: #dc2626 !important;
+}
+
+[data-theme="light"] .text-amber-400 {
+  color: #d97706 !important;
+}
+
+[data-theme="light"] .text-emerald-400 {
+  color: #059669 !important;
+}
+
+[data-theme="light"] .text-cyan-400 {
+  color: #0891b2 !important;
+}
+
+[data-theme="light"] .text-blue-400 {
+  color: #2563eb !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.35);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.6);
+}
+
+/* Markdown typography styling */
+.markdown-body {
+  font-family: inherit;
+  color: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.markdown-body p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body strong {
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+[data-theme="light"] .markdown-body strong, .light .markdown-body strong {
+  color: #0f172a;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  font-weight: 800;
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+  color: #38bdf8;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown-body code {
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.375rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.markdown-body blockquote {
+  border-left: 3px solid #38bdf8;
+  padding-left: 0.75rem;
+  margin-left: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+
+
