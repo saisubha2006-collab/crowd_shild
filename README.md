@@ -20,5 +20,5 @@ View your app in AI Studio: https://ai.studio/apps/382fc731-3b08-4cbb-acaf-7c918
 3. Run the app:
    `npm run dev`
 =======
-# crowd_shild
+# Crowd_Shield.AI
 >>>>>>> b1427730c33ee46c05d9e65763a48a8e15bf8639
